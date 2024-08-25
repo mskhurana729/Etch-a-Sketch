@@ -5,10 +5,21 @@ const container = document.querySelector('.container');
 const button = document.querySelector('button');
 
 
+function getRandomNumber(number = 255) {
+    return Math.floor(Math.random() * number);
+}
 
 
 function addClass(classToAdd, e = e) {
-    e.target.classList.add(`${classToAdd}`);
+    e.target.classList.add(classToAdd);
+}
+
+
+function changeBackgroundColor(e = e) {
+    if (!(e.target.classList.contains('bgColorChanged'))) {//bg color will not change if its already changed
+        e.target.style.backgroundColor = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+        addClass('bgColorChanged', e);
+    }
 
 }
 
@@ -66,9 +77,9 @@ function createNewGrid(e) {
 function activateColumnEventListener() {//to change the column div's color to blue when hovered over
     const columnDivs = document.querySelectorAll('.columnDiv');
     columnDivs.forEach(column => {
-        column.addEventListener('mouseenter', (e) => addClass('backgroundBlue', e));
+        column.addEventListener('mouseenter', (e) => changeBackgroundColor(e));
     });
 }
 
-
+createNewGrid();
 button.addEventListener('click', createNewGrid)
