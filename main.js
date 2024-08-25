@@ -46,16 +46,18 @@ function getRowAndColumn() {
     } while (number > 100);
     return number;
 }
-
-
-function createNewGrid(e) {
-    let numberOfSquare = getRowAndColumn();
-    //it will check if there is already a grid container present and if there is it will remove that container and create a new one.
+function removeGridContainer() {
     const gridContainer = document.querySelector('.gridContainer');
     if (gridContainer) {
 
         container.removeChild(gridContainer);
     }
+}
+
+function createNewGrid(e) {
+    let numberOfSquare = getRowAndColumn();
+    //it will check if there is already a grid container present and if there is it will remove that container and create a new one.
+    removeGridContainer();
     createGrid(numberOfSquare, numberOfSquare);
     activateColumnEventListener();
 }
