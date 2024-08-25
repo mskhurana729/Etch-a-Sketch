@@ -5,6 +5,33 @@
 }
 
 .div {
-    border: 2px solid black;
-    margin: 2px;
+
+    border: 1px solid black;
+
+}
+
+.gridContainer {
+
+    border: 2px solid blue;
+    height: 480px;
+    width: 480px;
+    display: flex;
+
+}
+
+.rowDiv {
+    display: flex;
+    flex-direction: column;
+
+
+    flex-grow: 1;
+
+}
+
+
+.columnDiv {
+
+    flex: 1 0 auto;
+    height: auto;
+
 }

@@ -6,8 +6,18 @@
 
 
 const container = document.querySelector('.container');
+const button = document.querySelector('button');
+
+
+function createContainerForGrid() {
+    const gridContainer = document.createElement('div');
+    gridContainer.classList.add('gridContainer')
+    return gridContainer;
+}
+
 
 function createGrid(row, column) {
+    const gridContainer = createContainerForGrid();
     for (let i = 0; i < row; i++) { //to create rows
         const rowDiv = document.createElement('div');
         rowDiv.classList.add('rowDiv');
@@ -18,8 +28,32 @@ function createGrid(row, column) {
             columnDiv.classList.add('div');
             rowDiv.appendChild(columnDiv);
         }
-        container.appendChild(rowDiv);
+        gridContainer.appendChild(rowDiv);
     }
+    container.appendChild(gridContainer);
 }
 
-createGrid(16, 16);
+
+function getRowAndColumn() {
+    let number = 0;
+    do {
+        number = prompt(`Enter number of squares you want in the grid(Limit is 100)`);
+        console.log(prompt);
+    } while (number > 100);
+    return number;
+}
+
+
+function createNewGrid(e) {
+    let numberOfSquare = getRowAndColumn();
+    //it will check if there is already a grid container present and if there is it will remove that container and create a new one.
+    const gridContainer = document.querySelector('.gridContainer');
+    if (gridContainer) {
+
+        container.removeChild(gridContainer);
+    }
+    createGrid(numberOfSquare, numberOfSquare);
+}
+
+
+button.addEventListener('click', createNewGrid)
