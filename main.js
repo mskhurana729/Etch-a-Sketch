@@ -18,7 +18,14 @@ function addClass(classToAdd, e = e) {
 function changeBackgroundColor(e = e) {
     if (!(e.target.classList.contains('bgColorChanged'))) {//bg color will not change if its already changed
         e.target.style.backgroundColor = `rgb(${getRandomNumber()}, ${getRandomNumber()}, ${getRandomNumber()})`;
+        e.target.style.opacity = '.1';
         addClass('bgColorChanged', e);
+    } else {
+
+        if (e.target.style.opacity < '1') {
+            e.target.style.opacity = `${+e.target.style.opacity + .1}`;
+
+        }
     }
 
 }
