@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-.div {
-
-    border: 1px solid black;
-
-}
 
 .gridContainer {
 
@@ -34,4 +29,8 @@
     flex: 1 0 auto;
     height: auto;
 
+}
+
+.backgroundBlue {
+    background-color: blue;
 }

@@ -1,12 +1,16 @@
-// we have to create a function which takes an input from user (number of squares) and create a grid of squares div
-// to do so we have to create a 2d structure
-// first we will run a for loop for number of div's in row and inside that for loop we will run a new for loop of squares in column.
-//for every row iteration we will create 1 div and in that div we will create divs as many as columns are needed
 
 
 
 const container = document.querySelector('.container');
 const button = document.querySelector('button');
+
+
+
+
+function addClass(classToAdd, e = e) {
+    e.target.classList.add(`${classToAdd}`);
+
+}
 
 
 function createContainerForGrid() {
@@ -38,7 +42,7 @@ function getRowAndColumn() {
     let number = 0;
     do {
         number = prompt(`Enter number of squares you want in the grid(Limit is 100)`);
-        console.log(prompt);
+
     } while (number > 100);
     return number;
 }
@@ -53,6 +57,15 @@ function createNewGrid(e) {
         container.removeChild(gridContainer);
     }
     createGrid(numberOfSquare, numberOfSquare);
+    activateColumnEventListener();
+}
+
+
+function activateColumnEventListener() {//to change the column div's color to blue when hovered over
+    const columnDivs = document.querySelectorAll('.columnDiv');
+    columnDivs.forEach(column => {
+        column.addEventListener('mouseenter', (e) => addClass('backgroundBlue', e));
+    });
 }
 
 
